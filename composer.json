@@ -1,0 +1,53 @@
+{
+    "name": "tcgunel/omnipay-esnekpos",
+    "type": "library",
+    "description": "Omnipay extension for Esnekpos Sanal POS",
+    "keywords": [
+        "esnekpos",
+        "omnipay",
+        "payment",
+        "gateway",
+        "3d secure",
+        "ödeme",
+        "3D İşlem Başlatma",
+        "3D ile Ödeme"
+    ],
+    "homepage": "https://github.com/tcgunel/omnipay-esnekpos",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tolga Can Günel",
+            "email": "tlgcngnl@gmail.com"
+        },
+        {
+            "name": "Omnipay Contributors",
+            "homepage": "https://github.com/tcgunel/omnipay-esnekpos/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Esnekpos\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Omnipay\\Esnekpos\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.3|^8.0",
+        "league/omnipay": "^3",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "omnipay/tests": "^4",
+        "brianium/paratest": "*",
+        "fzaninotto/faker": "*",
+        "http-interop/http-factory-guzzle": "^1.2"
+    },
+    "scripts": {
+        "test": "vendor/bin/paratest --processes 6",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    }
+}
