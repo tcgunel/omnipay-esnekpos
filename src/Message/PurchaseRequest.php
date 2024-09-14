@@ -66,7 +66,7 @@ class PurchaseRequest extends AbstractRequest
 
         if ($enrollment->STATUS !== 'SUCCESS' || $enrollment->RETURN_CODE !== '0'){
 
-            throw new OmnipayEsnekposEnrollmentResponseException($enrollment->RETURN_MESSAGE_TR, $enrollment->RETURN_CODE);
+            throw new OmnipayEsnekposEnrollmentResponseException($enrollment->RETURN_MESSAGE_TR ?? $enrollment->RETURN_MESSAGE, $enrollment->RETURN_CODE);
 
         }
 
