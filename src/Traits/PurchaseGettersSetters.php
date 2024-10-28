@@ -54,4 +54,14 @@ trait PurchaseGettersSetters
     {
         return $this->getParameter('installment');
     }
+
+    public function setIsCommissionBelongsToCustomer($value)
+    {
+        return $this->setParameter('is_commission_belongs_to_customer', $value);
+    }
+
+    public function getIsCommissionBelongsToCustomer()
+    {
+        return $this->getParameter('is_commission_belongs_to_customer');
+    }
 }

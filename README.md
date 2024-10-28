@@ -100,3 +100,66 @@ if ($verify_response->isSuccessful() && collect($data->TRANSACTIONS)->where('STA
 
 }
 ```
+
+# Taksit Sorgulama
+
+```php
+/** @var \Omnipay\Esnekpos\Gateway $gateway */
+$gateway = \Omnipay\Omnipay::create('Esnekpos');
+
+$gateway
+    ->setMerchant('MERCHANT')
+    ->setMerchantKey('MERCHANT_KEY');
+
+/** @var \Omnipay\Esnekpos\Message\FetchInstallmentOptionsRequest $installment */
+$installment = $gateway->fetchInstallmentOptions();
+
+$installment
+    ->setAmount('100')
+    ->setCard(
+        (new \Omnipay\Common\CreditCard()->setNumber('9792100000000001'))
+    );
+
+$installment_response = $installment->send();
+
+var_dump($installment_response->getData());
+
+if ($installment_response->isSuccessful()){
+
+    var_dump(true);
+
+}else{
+
+    var_dump(false);
+
+}
+```
+
+# Bin Sorgulama
+
+```php
+/** @var \Omnipay\Esnekpos\Gateway $gateway */
+$gateway = \Omnipay\Omnipay::create('Esnekpos');
+
+/** @var \Omnipay\Esnekpos\Message\BinLookupRequest $bin_lookup */
+$bin_lookup = $gateway->fetchInstallmentOptions();
+
+$bin_lookup
+    ->setCard(
+        (new \Omnipay\Common\CreditCard()->setNumber('9792100000000001'))
+    );
+
+$bin_lookup_response = $bin_lookup->send();
+
+var_dump($bin_lookup_response->getData());
+
+if ($bin_lookup_response->isSuccessful()){
+
+    var_dump(true);
+
+}else{
+
+    var_dump(false);
+
+}
+```
