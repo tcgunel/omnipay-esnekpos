@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 100
+
+{"Bank_Name":null,"Bank_Brand":null,"Card_Type":null,"Card_Family":null,"Card_Kind":null}

@@ -1,0 +1,9 @@
+{
+  "merchant": "test_merchant",
+  "merchant_key": "test_merchant_key",
+  "amount": 100.50,
+  "card": {
+    "number": "4111111111111111"
+  },
+  "is_commission_belongs_to_customer": 1
+}

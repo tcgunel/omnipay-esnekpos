@@ -44,10 +44,15 @@
         "omnipay/tests": "^4",
         "brianium/paratest": "*",
         "fzaninotto/faker": "*",
-        "http-interop/http-factory-guzzle": "^1.2"
+        "http-interop/http-factory-guzzle": "^1.2",
+        "laravel/pint": "^1.0",
+        "phpstan/phpstan": "^1.0"
     },
     "scripts": {
         "test": "vendor/bin/paratest --processes 6",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "analyse": "vendor/bin/phpstan analyse",
+        "lint": "vendor/bin/pint",
+        "lint-check": "vendor/bin/pint --test"
     }
 }

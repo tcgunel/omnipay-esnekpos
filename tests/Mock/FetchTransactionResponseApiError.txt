@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 200
+
+{"STATUS":"FAILURE","RETURN_CODE":"99","RETURN_MESSAGE":"Islem bulunamadi","DATE":null,"PAYMENT_DATE":null,"REFNO":null,"AMOUNT":null,"ORDER_REF_NUMBER":"ORDER-999999","INSTALLMENT":null,"SUCCESS_TRANSACTION_ID":null,"TRANSACTIONS":null,"PHYSICAL_POS_ID":null,"PHYSICAL_POS_TITLE":null,"PAYMENT_WAY":null}

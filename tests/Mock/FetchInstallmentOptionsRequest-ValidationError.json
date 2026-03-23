@@ -1,0 +1,7 @@
+{
+  "merchant": "test_merchant",
+  "merchant_key": "test_merchant_key",
+  "card": {
+    "number": "4111111111111111"
+  }
+}

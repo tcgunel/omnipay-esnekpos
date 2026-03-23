@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 200
+
+{"Bank_Name":"Yapi Kredi Bankasi","Bank_Brand":"World","Card_Type":"CREDIT","Card_Family":"VISA","Card_Kind":"Personal"}

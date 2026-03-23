@@ -1,0 +1,6 @@
+HTTP/1.1 500 Internal Server Error
+Server: nginx
+Content-Type: application/json
+Content-Length: 50
+
+{"error":"Internal Server Error"}

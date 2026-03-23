@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 200
+
+{"STATUS":"FAILURE","RETURN_CODE":"99","RETURN_MESSAGE":"Islem basarisiz","INSTALLMENTS":null}

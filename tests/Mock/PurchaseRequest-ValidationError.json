@@ -1,0 +1,31 @@
+{
+  "merchant": "test_merchant",
+  "merchant_key": "test_merchant_key",
+  "transactionId": "ORDER-123456",
+  "amount": null,
+  "card": {
+    "firstName": "Example",
+    "lastName": "User",
+    "number": "4111111111111111",
+    "expiryMonth": "12",
+    "expiryYear": "2099",
+    "cvv": "123",
+    "email": "test@example.com",
+    "billingPhone": "5554443322",
+    "billingCity": "Istanbul",
+    "billingAddress1": "123 Billing St"
+  },
+  "clientIp": "127.0.0.1",
+  "items": [
+    {
+      "name": "Test Product",
+      "description": "A test product description",
+      "quantity": 1,
+      "price": 100.50
+    }
+  ],
+  "installment": "1",
+  "returnUrl": "https://example.com/payment-callback",
+  "currency": "TRY",
+  "testMode": true
+}

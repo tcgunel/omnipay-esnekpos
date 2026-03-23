@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 500
+
+{"ORDER_REF_NUMBER":"ORDER-123456","STATUS":"SUCCESS","RETURN_CODE":"0","RETURN_MESSAGE":"Success","RETURN_MESSAGE_TR":"Basarili","ERROR_CODE":null,"DATE":"2024-01-15 10:30:00","URL_3DS":"https://3ds.esnekpos.com/redirect/abc123","REFNO":"REF-789","HASH":"hash123","COMMISSION_RATE":"1.5","CUSTOMER_NAME":"Example User","CUSTOMER_MAIL":"test@example.com","CUSTOMER_PHONE":"5554443322","CUSTOMER_ADDRESS":"123 Billing St","CUSTOMER_CC_NUMBER":"411111******1111","CUSTOMER_CC_NAME":"Example User","IS_NOT_3D_PAYMENT":false,"VIRTUAL_POS_VALUES":null,"RETURN_MESSAGE_3D":null,"BANK_AUTH_CODE":null}
