@@ -18,17 +18,17 @@ class BaseModel
 
                     $this->$key = $arg === null ? null : new $property_type($arg);
 
-                } else if (is_array($arg) && class_exists(__NAMESPACE__ . '\\' . $this->singular($key) . 'Model')) {
+                } elseif (is_array($arg) && class_exists(__NAMESPACE__ . '\\' . $this->singular($key) . 'Model')) {
 
                     $model_class_name = __NAMESPACE__ . '\\' . $this->singular($key) . 'Model';
 
-                    foreach ($arg as $item){
+                    foreach ($arg as $item) {
 
                         $this->$key[] = new $model_class_name($item);
 
                     }
 
-                } else if (in_array($property_type, ['string', 'int', 'float', 'bool'], true)) {
+                } elseif (in_array($property_type, ['string', 'int', 'float', 'bool'], true)) {
 
                     $this->$key = $arg;
 
@@ -38,8 +38,9 @@ class BaseModel
 
         }
 
-        if (!empty($abstract))
+        if (!empty($abstract)) {
             $this->original_response = json_encode($abstract);
+        }
     }
 
     public string $original_response;
@@ -49,9 +50,9 @@ class BaseModel
         $singular = $plural;
 
         $irregularPlurals = [
-            's'  => '',
+            's' => '',
             'es' => '',
-            'S'  => '',
+            'S' => '',
             'ES' => '',
         ];
 

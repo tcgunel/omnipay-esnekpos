@@ -9,30 +9,30 @@ trait PurchaseGettersSetters
         return $this->setParameter('merchant', $value);
     }
 
-	public function getMerchant()
-	{
-		return $this->getParameter('merchant');
-	}
+    public function getMerchant()
+    {
+        return $this->getParameter('merchant');
+    }
 
     public function setMerchantKey($value)
     {
         return $this->setParameter('merchant_key', $value);
     }
 
-	public function getMerchantKey()
-	{
-		return $this->getParameter('merchant_key');
-	}
+    public function getMerchantKey()
+    {
+        return $this->getParameter('merchant_key');
+    }
 
     public function setSecure($value)
     {
         return $this->setParameter('secure', $value);
     }
 
-	public function getSecure()
-	{
-		return $this->getParameter('secure');
-	}
+    public function getSecure()
+    {
+        return $this->getParameter('secure');
+    }
 
     public function getEndpoint()
     {
@@ -63,5 +63,15 @@ trait PurchaseGettersSetters
     public function getIsCommissionBelongsToCustomer()
     {
         return $this->getParameter('is_commission_belongs_to_customer');
+    }
+
+    public function setDescription($value)
+    {
+        return $this->setParameter('description', $value);
+    }
+
+    public function getDescription()
+    {
+        return $this->getParameter('description');
     }
 }

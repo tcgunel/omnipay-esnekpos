@@ -8,5 +8,3 @@ class MERCHANT_AMOUNT_TRANSFER_DETAIL extends BaseModel
     public ?string $SENDED_AMOUNT;
     public ?string $SENDED_DATE;
 }
-
-

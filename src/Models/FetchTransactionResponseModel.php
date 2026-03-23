@@ -20,5 +20,3 @@ class FetchTransactionResponseModel extends BaseModel
     public ?string $PHYSICAL_POS_TITLE;
     public ?string $PAYMENT_WAY;
 }
-
-

@@ -10,135 +10,135 @@ use Omnipay\Esnekpos\Tests\TestCase;
 
 class BinLookupTest extends TestCase
 {
-	/**
-	 * @throws InvalidCreditCardException
-	 * @throws \JsonException
-	 */
-	public function test_bin_lookup_request()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/BinLookupRequest.json");
+    /**
+     * @throws InvalidCreditCardException
+     * @throws \JsonException
+     */
+    public function test_bin_lookup_request()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/BinLookupRequest.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$data = $request->getData();
+        $data = $request->getData();
 
-		$expected = [
-			'CardNumber' => '411111',
-		];
+        $expected = [
+            'CardNumber' => '411111',
+        ];
 
-		self::assertEquals($expected, $data);
-	}
+        self::assertEquals($expected, $data);
+    }
 
-	public function test_bin_lookup_request_validation_error()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/BinLookupRequest-ValidationError.json");
+    public function test_bin_lookup_request_validation_error()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/BinLookupRequest-ValidationError.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$this->expectException(InvalidCreditCardException::class);
-		$this->expectExceptionMessage('Card number should have at least 6 to maximum of 19 digits');
+        $this->expectException(InvalidCreditCardException::class);
+        $this->expectExceptionMessage('Card number should have at least 6 to maximum of 19 digits');
 
-		$request->getData();
-	}
+        $request->getData();
+    }
 
-	/**
-	 * @throws \JsonException
-	 */
-	public function test_bin_lookup_response_success()
-	{
-		$httpResponse = $this->getMockHttpResponse('BinLookupResponseSuccess.txt');
+    /**
+     * @throws \JsonException
+     */
+    public function test_bin_lookup_response_success()
+    {
+        $httpResponse = $this->getMockHttpResponse('BinLookupResponseSuccess.txt');
 
-		$response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
+        $response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
 
-		$this->assertTrue($response->isSuccessful());
+        $this->assertTrue($response->isSuccessful());
 
-		$this->assertEquals('CREDIT', $response->getMessage());
+        $this->assertEquals('CREDIT', $response->getMessage());
 
-		$data = $response->getData();
+        $data = $response->getData();
 
-		$this->assertInstanceOf(BinLookupResponseModel::class, $data);
-		$this->assertEquals('Yapi Kredi Bankasi', $data->Bank_Name);
-		$this->assertEquals('World', $data->Bank_Brand);
-		$this->assertEquals('CREDIT', $data->Card_Type);
-		$this->assertEquals('VISA', $data->Card_Family);
-		$this->assertEquals('Personal', $data->Card_Kind);
-	}
+        $this->assertInstanceOf(BinLookupResponseModel::class, $data);
+        $this->assertEquals('Yapi Kredi Bankasi', $data->Bank_Name);
+        $this->assertEquals('World', $data->Bank_Brand);
+        $this->assertEquals('CREDIT', $data->Card_Type);
+        $this->assertEquals('VISA', $data->Card_Family);
+        $this->assertEquals('Personal', $data->Card_Kind);
+    }
 
-	public function test_bin_lookup_response_api_error()
-	{
-		$httpResponse = $this->getMockHttpResponse('BinLookupResponseApiError.txt');
+    public function test_bin_lookup_response_api_error()
+    {
+        $httpResponse = $this->getMockHttpResponse('BinLookupResponseApiError.txt');
 
-		$response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
+        $response = new BinLookupResponse($this->getMockRequest(), $httpResponse);
 
-		$this->assertFalse($response->isSuccessful());
+        $this->assertFalse($response->isSuccessful());
 
-		$data = $response->getData();
+        $data = $response->getData();
 
-		$this->assertInstanceOf(BinLookupResponseModel::class, $data);
-		$this->assertNull($data->Card_Type);
-		$this->assertNull($data->Bank_Name);
-	}
+        $this->assertInstanceOf(BinLookupResponseModel::class, $data);
+        $this->assertNull($data->Card_Type);
+        $this->assertNull($data->Bank_Name);
+    }
 
-	/**
-	 * @throws \JsonException
-	 */
-	public function test_bin_lookup_send_full_flow()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/BinLookupRequest.json");
+    /**
+     * @throws \JsonException
+     */
+    public function test_bin_lookup_send_full_flow()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/BinLookupRequest.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$this->setMockHttpResponse('BinLookupResponseSuccess.txt');
+        $this->setMockHttpResponse('BinLookupResponseSuccess.txt');
 
-		/** @var BinLookupResponse $response */
-		$response = $request->send();
+        /** @var BinLookupResponse $response */
+        $response = $request->send();
 
-		$this->assertInstanceOf(BinLookupResponse::class, $response);
-		$this->assertTrue($response->isSuccessful());
-		$this->assertEquals('CREDIT', $response->getMessage());
-	}
+        $this->assertInstanceOf(BinLookupResponse::class, $response);
+        $this->assertTrue($response->isSuccessful());
+        $this->assertEquals('CREDIT', $response->getMessage());
+    }
 
-	/**
-	 * @throws \JsonException
-	 */
-	public function test_bin_lookup_sends_correct_http_payload()
-	{
-		$options = file_get_contents(__DIR__ . "/../Mock/BinLookupRequest.json");
+    /**
+     * @throws \JsonException
+     */
+    public function test_bin_lookup_sends_correct_http_payload()
+    {
+        $options = file_get_contents(__DIR__ . '/../Mock/BinLookupRequest.json');
 
-		$options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
+        $options = json_decode($options, true, 512, JSON_THROW_ON_ERROR);
 
-		$request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new BinLookupRequest($this->getHttpClient(), $this->getHttpRequest());
 
-		$request->initialize($options);
+        $request->initialize($options);
 
-		$this->setMockHttpResponse('BinLookupResponseSuccess.txt');
+        $this->setMockHttpResponse('BinLookupResponseSuccess.txt');
 
-		$request->send();
+        $request->send();
 
-		$httpRequests = $this->getMockedRequests();
+        $httpRequests = $this->getMockedRequests();
 
-		$this->assertCount(1, $httpRequests);
+        $this->assertCount(1, $httpRequests);
 
-		$sentRequest = $httpRequests[0];
+        $sentRequest = $httpRequests[0];
 
-		$this->assertEquals('POST', $sentRequest->getMethod());
-		$this->assertStringContainsString('/api/services/EYVBinService', (string) $sentRequest->getUri());
-		$this->assertEquals('application/json', $sentRequest->getHeaderLine('Content-Type'));
+        $this->assertEquals('POST', $sentRequest->getMethod());
+        $this->assertStringContainsString('/api/services/EYVBinService', (string) $sentRequest->getUri());
+        $this->assertEquals('application/json', $sentRequest->getHeaderLine('Content-Type'));
 
-		$body = json_decode((string) $sentRequest->getBody(), true, 512, JSON_THROW_ON_ERROR);
+        $body = json_decode((string) $sentRequest->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
-		$this->assertEquals('411111', $body['CardNumber']);
-	}
+        $this->assertEquals('411111', $body['CardNumber']);
+    }
 }

@@ -2,6 +2,6 @@
 
 namespace Omnipay\Esnekpos\Exceptions;
 
-class OmnipayEsnekposFetchTransactionRequestException extends \Exception{
-
+class OmnipayEsnekposFetchTransactionRequestException extends \Exception
+{
 }

@@ -33,10 +33,8 @@ class Gateway extends AbstractGateway
         return [
             'installment' => '1',
             'secure' => true,
-            'currency' => 'TRY',
             'description' => '',
             'is_commission_belongs_to_customer' => 1,
-
         ];
     }
 

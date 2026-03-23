@@ -11,5 +11,3 @@ class TRANSACTIONModel extends BaseModel
     public ?string $DATE;
     public ?MERCHANT_AMOUNT_TRANSFER_DETAIL $MERCHANT_AMOUNT_TRANSFER_DETAIL;
 }
-
-

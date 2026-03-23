@@ -10,5 +10,3 @@ class FetchInstallmentOptionsResponseModel extends BaseModel
     /** @var array|null|INSTALLMENTModel[]  */
     public ?array $INSTALLMENTS;
 }
-
-

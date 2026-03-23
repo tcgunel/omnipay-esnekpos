@@ -11,5 +11,3 @@ class INSTALLMENTModel extends BaseModel
     public ?int $AMOUNT_TOTAL;
     public ?int $AMOUNT_BE_SEND_TO_DEALER;
 }
-
-

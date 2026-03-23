@@ -10,5 +10,3 @@ class BinLookupResponseModel extends BaseModel
     public ?string $Card_Family;
     public ?string $Card_Kind;
 }
-
-

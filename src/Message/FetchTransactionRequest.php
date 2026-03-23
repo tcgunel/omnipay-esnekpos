@@ -25,8 +25,8 @@ class FetchTransactionRequest extends AbstractRequest
         );
 
         return [
-            'MERCHANT'         => $this->getMerchant(),
-            'MERCHANT_KEY'     => $this->getMerchantKey(),
+            'MERCHANT' => $this->getMerchant(),
+            'MERCHANT_KEY' => $this->getMerchantKey(),
             'ORDER_REF_NUMBER' => $this->getTransactionId(),
         ];
     }
@@ -42,7 +42,7 @@ class FetchTransactionRequest extends AbstractRequest
             $this->getEndpoint(),
             [
                 'Content-Type' => 'application/json',
-                'Accept'       => 'application/json',
+                'Accept' => 'application/json',
             ],
             json_encode($data, JSON_THROW_ON_ERROR)
         );

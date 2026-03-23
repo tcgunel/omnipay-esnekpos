@@ -2,6 +2,6 @@
 
 namespace Omnipay\Esnekpos\Exceptions;
 
-class OmnipayEsnekposEnrollmentRequestException extends \Exception{
-
+class OmnipayEsnekposEnrollmentRequestException extends \Exception
+{
 }

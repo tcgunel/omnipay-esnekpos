@@ -26,5 +26,3 @@ class EnrollmentResponseModel extends BaseModel
     public ?string $RETURN_MESSAGE_3D;
     public ?string $BANK_AUTH_CODE;
 }
-
-
